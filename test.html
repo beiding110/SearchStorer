@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>search-storer</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+
+	<script type="text/javascript" src="./SearchStorer.js"></script>
+</head>
+<body>
+	<p>刷新后搜索条件依旧存在</p>
+
+	<label>姓名</label>
+	<input id="name"/>
+	<label>年龄</label>
+	<input id="age"/>
+	<button onclick="clickHandler()">搜索</button>
+	
+	<script type="text/javascript">
+	var ss = new SearchStorer();
+	var last = ss.$get();
+
+	document.querySelector('#name').value = last.name || '';
+	document.querySelector('#age').value = last.age || '';
+
+	function clickHandler() {
+		ss.$set({
+			name: {
+				el: '#name'
+			},
+			age: {
+				el: '#age'
+			},
+			page: 11
+		})
+	}
+	</script>
+</body>
+</html>
